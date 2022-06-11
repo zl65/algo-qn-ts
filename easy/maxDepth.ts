@@ -7,7 +7,6 @@
 
 
 function maxDepth(root: TreeNode | null): number {
-  if (root === null) return 0
   let res = 0
   let depth = 0
 
