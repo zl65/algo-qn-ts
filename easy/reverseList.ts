@@ -22,3 +22,5 @@ function reverseList2(head: ListNode | null): ListNode | null {
   head.next = null
   return newHead
 }
+
+// 未验证过：建立一个dummy的头，每次都把原链表当前的节点放到dummy的下一个，最后返回dummy.next
