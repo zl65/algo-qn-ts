@@ -8,8 +8,9 @@ function numIslands(grid: string[][]): number {
   // let visited: boolean[][] = new Array(column).fill(0).map(() => new Array(row).fill(false))
   let res: number = 0
 
+  // 这个遍历的意义就是把当前节点相邻的1变成0
+  // 如果是1 就变成0，然后继续扩散，是0就return
   function dfs(i: number, j: number) {
-
     if (i >= column || j >= row || i < 0 || j < 0) return
     // 这个题目里因为有0和1就退出了，所以常规遍历里的visited用不着
     // if (visited[i][j]) return
@@ -26,6 +27,9 @@ function numIslands(grid: string[][]): number {
 
   for (let k = 0; k < column; k++) {
     for (let l = 0; l < row; l++) {
+      // 被visited过的，一定只会是0，所以可以这样跳过，但其实没什么用，是0的时候if就进不去，重复了
+      // 注意是continue，跳过当次循环，不是break，break会结束整个for
+      // if (visited[k][l]) continue
       if (grid[k][l] === '1') {
         res++
         dfs(k, l)
