@@ -17,6 +17,7 @@ function numIslands(grid: string[][]): number {
     // visited[i][j] = true
 
     if (grid[i][j] === '0') return
+    // 是 1 如果被访问过就要变成 0，这是为了下一次遍历到这个节点的时候，不会被计算为一个新的岛屿
     grid[i][j] = '0'
 
     dfs(i - 1, j)
@@ -37,4 +38,42 @@ function numIslands(grid: string[][]): number {
     }
   }
   return res
+}
+
+
+function numIslands2(grid: string[][]) {
+  const m = grid.length
+  const n = grid[0].length
+  let nums = 0
+
+  // 这是扩散的方法，参数是扩散基点的坐标，扩散时，如果是 0 就 return，是 1 就继续扩散，进入递归
+  // 为了避免重复访问和重复计算岛屿数量，每访问一次 1，就把它改成 0
+  function traverse(i: number, j: number) {
+    if (grid[i][j] === '0') return
+    grid[i][j] = '0'
+
+    const neighbor = [ { i: i - 1, j }, { i: i + 1, j }, { i, j: j - 1 }, { i, j: j + 1 } ]
+    for (let k = 0; k < neighbor.length; k++) {
+      if (neighbor[k].i >= 0
+        && neighbor[k].i < m
+        && neighbor[k].j >= 0
+        && neighbor[k].j < n
+        && grid[neighbor[k].i][neighbor[k].j] === '1'
+      ) {
+        traverse(neighbor[k].i, neighbor[k].j)
+      }
+    }
+  }
+
+  // 对二维矩阵进行遍历，查到一个 1， 就算作一个岛屿，然后向四周扩散
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (grid[i][j] === '1') {
+        nums++
+        traverse(i, j)
+      }
+    }
+  }
+
+  return nums
 }
