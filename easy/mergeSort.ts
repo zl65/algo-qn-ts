@@ -40,6 +40,7 @@ function merge(nums: number[], left: number, mid: number, right: number): number
   return nums
 }
 
+
 function main() {
   const nums = [ 12, 17, 9, 11, 6, 7, 5, 0 ]
   mergeSort(nums)
@@ -47,3 +48,5 @@ function main() {
 }
 
 main()
+
+// 要注意每次都把 nums 返回了，直接修改的 nums
