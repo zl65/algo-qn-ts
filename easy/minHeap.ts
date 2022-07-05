@@ -1,6 +1,6 @@
-import { swap } from './utils'
+import { swap } from "./utils"
 
-class MinHeap {
+export class MinHeap {
   tree: number[]
 
   constructor(nums: number[]) {
@@ -26,7 +26,10 @@ class MinHeap {
   }
 
   shiftUp(i: number) {
-    while (Math.floor((i - 1) / 2) >= 0 && this.tree[Math.floor((i - 1) / 2)] > this.tree[i]) {
+    while (
+      Math.floor((i - 1) / 2) >= 0 &&
+      this.tree[Math.floor((i - 1) / 2)] > this.tree[i]
+    ) {
       swap(this.tree, Math.floor((i - 1) / 2), i)
       i = Math.floor((i - 1) / 2)
     }
@@ -56,6 +59,15 @@ class MinHeap {
       swap(this.tree, 0, this.tree.length - 1 - i)
       this.shiftDown(0, this.tree.length - 1 - i)
     }
+    return this.tree
+  }
+
+  getter() {
+    return this.tree
+  }
+
+  peak() {
+    return this.tree[0]
   }
 
   print() {
@@ -63,12 +75,11 @@ class MinHeap {
   }
 }
 
-const myMinHeap = new MinHeap([ 2, 3, 4, 1, 6, 9, 0, 8 ])
-myMinHeap.print()
-myMinHeap.insert(-1)
-myMinHeap.print()
-myMinHeap.delete(0)
-myMinHeap.print()
-myMinHeap.sort()
-myMinHeap.print()
-
+// const myMinHeap = new MinHeap([2, 3, 4, 1, 6, 9, 0, 8])
+// myMinHeap.print()
+// myMinHeap.insert(-1)
+// myMinHeap.print()
+// myMinHeap.delete(0)
+// myMinHeap.print()
+// myMinHeap.sort()
+// myMinHeap.print()
