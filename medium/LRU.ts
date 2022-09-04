@@ -39,6 +39,13 @@ class LRU {
     delete this.hashtable[key]
   }
 
+  // MRU
+  removeMostRecently() {
+    const deletedNode = this.list.removeLast()
+    const key = deletedNode!.key
+    delete this.hashtable[key]
+  }
+
   put(key: number, value: number) {
     if (key in this.hashtable) {
       this.deleteKey(key)
@@ -46,6 +53,8 @@ class LRU {
     } else {
       if (this.list.size === this.capacity) {
         this.removeLeastRecently()
+        // MRU
+        // this.removeMostRecently()
       }
       this.addRecently(key, value)
     }

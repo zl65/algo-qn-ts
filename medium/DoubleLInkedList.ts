@@ -31,6 +31,12 @@ export class DoubleLinkedList {
     this.size++
   }
 
+  remove(node: DoubleListNode) {
+    node.prev!.next = node.next
+    node.next!.prev = node.prev
+    this.size--
+  }
+
   removeFirst() {
     if (this.head.next === this.tail) return null
     const firstNode = this.head.next
@@ -38,9 +44,11 @@ export class DoubleLinkedList {
     return firstNode
   }
 
-  remove(node: DoubleListNode) {
-    node.prev!.next = node.next
-    node.next!.prev = node.prev
-    this.size--
+  // MRU
+  removeLast() {
+    if (this.tail.prev === this.head) return null
+    const lastNode = this.tail.prev
+    this.remove(lastNode!)
+    return lastNode
   }
 }
