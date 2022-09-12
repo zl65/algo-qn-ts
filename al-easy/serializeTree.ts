@@ -1,8 +1,8 @@
-const sep = ','
-const nullStr = '*'
+const sep = ","
+const nullStr = "*"
 
 function serialize(root: TreeNode | null): string {
-  let res = ''
+  let res = ""
 
   function pre(node: TreeNode | null) {
     if (node === null) {
@@ -25,7 +25,7 @@ function serialize(root: TreeNode | null): string {
   }
 
   function bfs() {
-    const q = [ root ]
+    const q = [root]
     while (q.length > 0) {
       const nodeCount = q.length
       for (let i = 0; i < nodeCount; i++) {
@@ -49,11 +49,9 @@ function serialize(root: TreeNode | null): string {
   // 前序遍历不去掉也没事，是因为最后到 null 就结束了，最后一个进不去
   // 但后序遍历从后往前，这个就很重要了
   return res.substring(0, res.length - 1)
-
 }
 
 function deserialize(data: string): TreeNode | null {
-
   const dataArr = data.split(sep)
 
   function dePre(): TreeNode | null {
@@ -83,7 +81,8 @@ function deserialize(data: string): TreeNode | null {
     if (dataArr.length === 0) return null
 
     const q: (TreeNode | null)[] = []
-    const root = dataArr[0] === nullStr ? null : new TreeNode(Number(dataArr[0]))
+    const root =
+      dataArr[0] === nullStr ? null : new TreeNode(Number(dataArr[0]))
     q.push(root)
 
     // 注意 0 是 root，第一次的子节点是从 1 开始的
@@ -113,17 +112,3 @@ function deserialize(data: string): TreeNode | null {
 
   return deBfs()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
