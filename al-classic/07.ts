@@ -1,4 +1,4 @@
-function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
+function buildTree2(preorder: number[], inorder: number[]): TreeNode | null {
   function build(
     preStart: number,
     preEnd: number,
