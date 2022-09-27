@@ -36,15 +36,18 @@ export class MinHeap {
   }
 
   build() {
-    const lastParent = Math.floor((this.tree.length - 1 - 1) / 2)
+    const lastNodeIndex = this.tree.length
+
+    const lastParent = Math.floor((lastNodeIndex - 1) / 2)
     for (let i = lastParent; i >= 0; i--) {
       this.shiftDown(i)
     }
   }
 
   insert(val: number) {
+    const lastNodeIndex = this.tree.length
     this.tree.push(val)
-    this.shiftUp(this.tree.length - 1)
+    this.shiftUp(lastNodeIndex)
   }
 
   delete(i: number): number {
