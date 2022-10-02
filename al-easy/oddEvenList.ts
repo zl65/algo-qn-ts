@@ -17,6 +17,22 @@ function oddEvenList(head: ListNode | null): ListNode | null {
   return head
 }
 
+function oddEvenList2(head: ListNode | null): ListNode | null {
+  if (head === null) return null
+  const evenHead = head.next
+  let odd = head
+  let even = evenHead
+
+  while (even !== null && even.next !== null) {
+    odd.next = even.next
+    odd = odd.next
+    even.next = odd.next
+    even = even.next
+  }
+  odd.next = evenHead
+  return head
+}
+
 // 时间复杂度 O(n)
 // 空间复杂度 O(1)
 
@@ -29,5 +45,3 @@ function oddEvenList(head: ListNode | null): ListNode | null {
 // 奇数指针往前移动一步
 // 当前偶数的下一个，就是移动后的奇数指针的下一个
 // 偶数指针对应移动
-
-

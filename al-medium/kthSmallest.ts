@@ -16,3 +16,22 @@ function kthSmallest(root: TreeNode | null, k: number): number {
 
   return res
 }
+
+function practice(root: TreeNode | null, k: number): number {
+  let count = 0
+  let res = -1
+
+  function dfs(root: TreeNode | null) {
+    if (root === null) return
+    dfs(root.left)
+    count++
+
+    if (count === k) {
+      res = root.val
+    }
+    dfs(root.right)
+  }
+
+  dfs(root)
+  return res
+}

@@ -26,7 +26,6 @@ function inorderTraversal(root: TreeNode | null): number[] {
   return res
 }
 
-
 function postorderTraversal(root: TreeNode | null): number[] {
   let res: number[] = []
 

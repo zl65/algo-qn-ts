@@ -23,8 +23,10 @@
 
 // 不需要两个 flag 是因为各自走完 2 个链表的长度，就会相遇
 
-
-function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): ListNode | null {
+function getIntersectionNode(
+  headA: ListNode | null,
+  headB: ListNode | null
+): ListNode | null {
   let pA = headA
   let pB = headB
   while (pA !== pB) {
@@ -33,6 +35,8 @@ function getIntersectionNode(headA: ListNode | null, headB: ListNode | null): Li
   }
   return pA
 }
+
+
 
 // 时间复杂度 O(A+B)
 // 空间复杂度 O(1)
